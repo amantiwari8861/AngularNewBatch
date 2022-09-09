@@ -1,0 +1,13 @@
+After downloading the project, open the Node command prompt and navigate to the mCart folder as shown below, and run the 'npm install' command to install the npm packages.
+
+D:\mCart>npm install
+
+This will create a folder called node_modules with all the dependencies installed inside it
+
+Note: Sometimes Angular will throw errors during installation. This can be due to the unavailability of some additional dependencies in your machine. After installation, always check if the node_modules folder is created under the project root folder. If it is created, you can ignore the errors that occurred during installation.
+
+ 
+
+Type the following command to run the application. This will open a browser with the default port as 4200.
+
+    D:\mCart>ng serve --open
