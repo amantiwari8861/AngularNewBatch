@@ -1,0 +1,29 @@
+<p>Hello i am child</p>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Course ID</th>
+      <th>Course Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{ course.courseId }}</td>
+      <td>{{ course.courseName }}</td>
+      <td><button (click)="register(course.courseName)">Register Here</button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<pre>
+  ViewEncapsulation.Emulated (default)   -> every component has it's unique id in which css apply using script tag in head like  <!-- p[_ngcontent-nof-c18]{background-color:cadetblue;} -->
+
+ViewEncapsulation.ShadowDOM  -> it will generate a fake root (fake shadow of root ) in which it encapsulates all the style tag and contents like 
+<!-- #shadowroot <style> </style> and content -->
+
+ViewEncapsulation.None -> it will set the style tag globally in head without any unique id which will affect all component
+
+
+</pre>

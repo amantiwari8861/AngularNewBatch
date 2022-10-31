@@ -1,0 +1,11 @@
+<p>test-hooks works!</p>
+<div>  
+    <h1>I'm a container component</h1>
+
+    <h1 (click)="changeCss($event)">Hello i am a component</h1>
+
+
+    <input type="text" [(ngModel)]='data'> 
+    <app-child [title]='data'></app-child>
+
+  </div>
