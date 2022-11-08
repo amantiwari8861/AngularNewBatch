@@ -6,10 +6,12 @@ import { ChildcompComponent } from './childtoparent/childcomp/childcomp.componen
 import { ChildtoparentComponent } from './childtoparent/childtoparent.component';
 import { TestHooksComponent } from './test-hooks/test-hooks.component';
 import { ChildComponent } from './test-hooks/child/child.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimerParentComponent } from './timer-parent/timer-parent.component';
 import { TimerComponent } from './timer-parent/timer/timer.component';
 import { BootstrapFormDemoComponent } from './bootstrap-form-demo/bootstrap-form-demo.component';
+import { TempFormComponent } from './temp-form/temp-form.component';
+import { ReactiveComponent } from './reactive/reactive.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,15 @@ import { BootstrapFormDemoComponent } from './bootstrap-form-demo/bootstrap-form
     JsonPipeComponent,
     TimerParentComponent,
     TimerComponent,
-    BootstrapFormDemoComponent
+    BootstrapFormDemoComponent,
+    TempFormComponent,
+    ReactiveComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

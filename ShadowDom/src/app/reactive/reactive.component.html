@@ -1,0 +1,107 @@
+<!-- <div class="container mt-5 bg-light text-dark" id="main1">  
+    <h1 class="text-center">Registration Form</h1>  
+    <form class="mb-3" autocomplete="off" [formGroup]="myform">
+      <div class="form-group col-sm-12">  
+        <label for="name">Name</label>  
+        <input type="text" formControlName="fname" class="form-control mt-2 col-sm-12" id="name" name="fname">  
+        <div *ngIf="myform.controls['fname'].errors?.['required'] && myform.controls['fname'].touched" class="toast align-items-center text-bg-danger border-0 w-100 show mt-1" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                Please enter a valid value !
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+          <div *ngIf="myform.controls['fname'].errors?.['minlength']" class="toast align-items-center text-bg-danger border-0 w-100 show mt-1" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                Please enter a valid Length!
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+          <div *ngIf="myform.controls['fname'].errors?.['pattern']" class="toast align-items-center text-bg-primary border-0 w-100 show mt-1" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                Please enter only small letters between 0-8 length!
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+      </div>  
+      <div class="form-group mt-5 col-sm-12">  
+        <label for="pass">Password</label>  
+        <input type="text" formControlName="pass" class="form-control mt-2 col-sm-12" id="pass" name="pass">  
+      </div>  
+      <div class="mt-5 mb-4 offset-sm-4 col-sm-12">
+      <button type="submit" class="btn btn-success ms-5 mt-2" (click)="submitted=true">Submit</button> 
+    </div>
+    </form>  
+    <div [hidden]="!submitted">
+        <h3> Employee Details </h3>
+        <p>First Name: {{ myform.get('fname')?.value }} </p>
+        <p>PassWord: {{ myform.get('pass')?.value }} </p>
+        <p>Status: {{ myform.status }} </p>
+         <p>PassWord: {{ pri() }} </p>
+      </div>
+</div>   -->
+<script src="https://kit.fontawesome.com/02b7ef5319.js" crossorigin="anonymous"></script>
+<div class="container-fluid vh-100 backg">
+  <!-- <div class="row">
+            <div class="col-sm-3 col-md-6 col-lg-12 mx-auto">
+                Hello
+            </div>
+        </div> -->
+  <div class="row">
+    <div class="col-sm-8 col-md-8 col-lg-6 mx-auto mt-5 form-container  rounded border border-dark">
+      <h1 class="text-center">Registration Form !</h1>
+      <form class="row g-3 bg-light text-dark rounded fs-4 m-3" [formGroup]="myform" (ngSubmit)="pri()">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="text" class="form-control" id="inputEmail4" formControlName="email1">
+          <span class="text-danger" *ngIf="myform.controls['email1'].errors  && myform.controls['email1'].touched">
+            <li id="err" > pls enter the valid value</li>
+          </span>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword4" formControlName="pass">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Address 2</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center mb-3">
+          <button type="submit" class="btn btn-primary p-2">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
