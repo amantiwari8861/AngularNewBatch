@@ -12,6 +12,11 @@ import { TimerComponent } from './timer-parent/timer/timer.component';
 import { BootstrapFormDemoComponent } from './bootstrap-form-demo/bootstrap-form-demo.component';
 import { TempFormComponent } from './temp-form/temp-form.component';
 import { ReactiveComponent } from './reactive/reactive.component';
+import { ServiceDemoComponent } from './service-demo/service-demo.component';
+import { BookService } from './book.service';
+import { TestObservableComponent } from './test-observable/test-observable.component';
+import { TestFakeAPIComponent } from './test-fake-api/test-fake-api.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,15 +30,19 @@ import { ReactiveComponent } from './reactive/reactive.component';
     TimerComponent,
     BootstrapFormDemoComponent,
     TempFormComponent,
-    ReactiveComponent
+    ReactiveComponent,
+    ServiceDemoComponent,
+    TestObservableComponent,
+    TestFakeAPIComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

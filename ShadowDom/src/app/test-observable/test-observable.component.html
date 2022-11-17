@@ -1,0 +1,31 @@
+<p>test-observable works!</p>
+<b> Using Observables!</b>
+<h6 style="margin-bottom: 0">VALUES:</h6>
+<div *ngFor="let value of myArray">{{ value }}</div>
+<div style="margin-bottom: 0">ERRORS: {{ errors }}</div>
+<div style="margin-bottom: 0">FINISHED: {{ finished }}</div>
+<button style="margin-top: 2rem" (click)="fetchData()">Fetch Data</button>
+
+<pre>
+Line 2: imports Observable class from rxjs module
+
+Line 11: data is of type Observable which holds numeric values
+
+Line 16: fetchData() is invoked on click of a button
+
+Line 17: A new Observable is created and stored in the variable data
+
+Line 18-20: next() method of Observable sends the given data through the stream. 
+With a delay of 1,2 and 3 seconds, a stream of numeric values will be sent. 
+Complete() method completes the Observable stream i.e.,closes the stream.
+
+Line 22: Observable has another method called subscribe which listens to the data coming through the stream.
+ Subscribe() method has three parameters.
+  The first parameter is a success callback which will be invoked upon receiving successful data from the stream.
+   The second parameter is an error callback which will be invoked when Observable returns an error
+    and the third parameter is a complete callback which will be invoked upon successful streaming
+     of values from Observable i.e., once complete() is invoked. 
+     After which the successful response, the data is pushed to the local array called myArray,
+      if any error occurs, a Boolean value called true is stored in the errors
+       variable and upon complete() will assign a Boolean value true in a finished variable.
+</pre>

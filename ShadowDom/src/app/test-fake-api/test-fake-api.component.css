@@ -1,0 +1,10 @@
+table
+{
+    width: 80%;
+    margin: 100px auto;
+    text-align: center;
+}
+table>tr:nth-child(2n)
+{
+    background-color: rgb(149, 140, 140);
+}

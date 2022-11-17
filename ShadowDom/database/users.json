@@ -1,0 +1,44 @@
+{
+    "users": [
+        {
+            "id": 100,
+            "name": "Aman",
+            "course": "java"
+        },
+        {
+            "id": 101,
+            "name": "Aman",
+            "course": "java"
+        },
+        {
+            "id": 102,
+            "name": "Aman",
+            "course": "java"
+        },
+        {
+            "id": 103,
+            "name": "Aman",
+            "course": "java"
+        },
+        {
+            "id": 104,
+            "name": "Aman",
+            "course": "java"
+        },
+        {
+            "id": 105,
+            "name": "Aman",
+            "course": "java"
+        },
+        {
+            "id": 106,
+            "name": "Aman",
+            "course": "java"
+        },
+        {
+            "id": 107,
+            "name": "anjali",
+            "course": "angular"
+        }
+    ]
+}

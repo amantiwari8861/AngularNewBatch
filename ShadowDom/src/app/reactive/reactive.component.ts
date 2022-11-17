@@ -17,7 +17,8 @@ export class ReactiveComponent implements OnInit {
       // fname: ['', [Validators.required,Validators.minLength(3),Validators.pattern('[a-z]{0,8}')]],
       pass: ['', [Validators.required,Validators.minLength(8),Validators.maxLength(10)]],
       // email1:['',[Validators.email,Validators.required]]
-      email1:['',[this.validateEmail,Validators.required]]
+      // email1:['',[this.validateEmail,Validators.required]]
+      email1:['',{updateOn:"blur",validators:[this.validateEmail,Validators.required]}]
     });
   }
 
