@@ -1,0 +1,112 @@
+<!-- <table>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>email</th>
+    </tr>
+    <tr *ngFor="let student of students">
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.email}}</td>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>email</th>
+    </tr>
+</table> -->
+
+
+<h2>{{ title }}</h2>
+<h2>My students</h2>
+<ul>
+    <li *ngFor="let student of students">
+        <span >{{ student.id }}</span> {{ student.name }}  <span>&nbsp;&nbsp;&nbsp;  {{student.email}}</span>
+    </li>
+</ul>
+<button (click)="ADD_BOOK = true">Add student</button>&nbsp;
+<!-- <button class="btn btn-primary" (click)="UPDATE_BOOK = true">Update student</button>&nbsp;
+<button class="btn btn-primary" (click)="DELETE_BOOK = true">Delete student</button> -->
+<br />
+<div *ngIf="ADD_BOOK">
+    <table>
+        <tr>
+            <td>Enter Id of the student:</td>
+            <td>
+                <input type="number" #id />
+            </td>
+        </tr>
+        <br />
+        <tr>
+            <td>Enter Name of the student:</td>
+            <td>
+                <input type="text" #name />
+                <br />
+            </td>
+        </tr>
+        <br />
+        <br />
+        <tr>
+            <td>Enter Email of the student:</td>
+            <td>
+                <input type="email" #email />
+                <br />
+            </td>
+        </tr>
+        <br />
+        <tr>
+            <td>
+                <button (click)="addStudent(id.value, name.value,email.value); ADD_BOOK = false">
+                    Add Record
+                </button>
+            </td>
+        </tr>
+    </table>
+    <br />
+</div>
+<!-- <div *ngIf="UPDATE_BOOK">
+  <table>
+    <tr>
+      <td>Enter Id of the student:</td>
+      <td>
+        <input type="number" #id />
+      </td>
+    </tr>
+    <br />
+    <tr>
+      <td>Enter Name of the student:</td>
+      <td>
+        <input type="text" #name />
+        <br />
+      </td>
+    </tr>
+    <br />
+    <tr>
+      <td>
+        <button class="btn btn-primary" (click)="updatestudent(id.value, name.value); UPDATE_BOOK = false">
+          Update Record
+        </button>
+      </td>
+    </tr>
+  </table>
+</div> -->
+<br />
+<!-- <div *ngIf="DELETE_BOOK">
+  <table>
+    <tr>
+      <td>Enter Id of the student:</td>
+      <td>
+        <input type="number" #id />
+      </td>
+    </tr>
+    <br />
+    <tr>
+      <td>
+        <button class="btn btn-primary" (click)="deletestudent(id.value); DELETE_BOOK = false">
+          Delete Record
+        </button>
+      </td>
+    </tr>
+  </table>
+</div> -->
+<div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>

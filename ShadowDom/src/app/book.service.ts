@@ -4,29 +4,29 @@ import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Book, BOOKS } from './service-demo/book-data';
 
 @Injectable({
-  // providedIn: 'root'
-  providedIn: null
+  providedIn: 'root'
+  // providedIn: null
 })
 export class BookService {
   // getBooks() {
   //   return BOOKS;
   // }
-  booksUrl = 'http://localhost:3020/bookList';
+  booksUrl = 'http://localhost:3020/bookList/';
   constructor(private http: HttpClient) { }
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>('http://localhost:3020/bookList').pipe(
+    return this.http.get<Book[]>(this.booksUrl).pipe(
       tap((data: any) => console.log('Data Fetched:' + JSON.stringify(data))),
       catchError(this.handleError));
   }
   addBook(book: Book): Observable<any> {
     const options = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post('http://localhost:3020/addBook', book, { headers: options }).pipe(
+    return this.http.post(this.booksUrl, book, { headers: options }).pipe(
       catchError(this.handleError));
   }
-  updateBook(book: Book): Observable<any> {
+  updateBook(book: Book): Observable<Book[]> {
     const options = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<any>('http://localhost:3020/update', book, { headers: options }).pipe(
-      tap((_: any) => console.log(`updated hero id=${book.id}`)),
+    return this.http.put<Book>(this.booksUrl+book.id, book, { headers: options }).pipe(
+      tap((un: any) => console.log(`updated hero id=${book.id}`)),
       catchError(this.handleError)
     );
   }
