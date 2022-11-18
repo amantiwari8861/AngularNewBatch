@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../register.service';
 import { first } from 'rxjs/operators';
-import { and } from '@angular/router/src/utils/collection';
+// import { and } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +12,13 @@ import { and } from '@angular/router/src/utils/collection';
 })
 export class LoginComponent implements OnInit {
   employee: any = {};
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
   submitted = false;
-  returnUrl: string;
+  returnUrl!: string;
   loading = false;
   emp: any;
   loggedInEmployee: any;
+  invalidLogin!:boolean;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -39,10 +40,10 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    console.log(this.loginForm.controls.id.value);
-    console.log(this.loginForm.controls.password.value);
+    console.log(this.loginForm.controls["id"].value);
+    console.log(this.loginForm.controls["password"].value);
     this.registerService.loginEmployee(this.employee).subscribe(data => {
-      sessionStorage.setItem('user', this.loginForm.controls.id.value);
+      sessionStorage.setItem('user', this.loginForm.controls["id"].value);
       window.location.reload();
       this.router.navigate(['home']);
     });

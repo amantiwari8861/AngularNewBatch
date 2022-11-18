@@ -14,8 +14,8 @@ export class AddCourseComponent implements OnInit {
   @Input() courses: any;
   constructor(private formBuilder: FormBuilder, private router: Router, private courseService: CourseService) { }
 
-  addForm: FormGroup;
-  course: any;
+  addForm!: FormGroup;
+  course!: Course;
   submitted = false;
   ngOnInit() {
     this.addForm = this.formBuilder.group({

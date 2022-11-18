@@ -7,7 +7,7 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AdmissionComponent } from './admission/admission.component';
+// import { AdmissionComponent } from './admission/admission.component';
 import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'update', component: UpdateCourseComponent },
   { path: 'add', component: AddCourseComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'admissions', component: AdmissionComponent },
+  // { path: 'admissions', component: AdmissionComponent },
   { path: 'contact-us', component: ContactComponent },
   { path: '**', redirectTo: '/' }
 ];

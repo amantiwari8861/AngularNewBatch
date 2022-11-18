@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   today = new Date();
   jstoday = '';
   loggedInUser: any;
-  user: number;
+  user!: number;
   mynumber: any;
   constructor(private router: Router) {
     this.jstoday = formatDate(this.today, 'MMM dd, yyyy , hh:mm:ss a', 'en-US', '+0530');

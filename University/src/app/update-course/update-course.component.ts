@@ -11,8 +11,8 @@ import { CourseService } from '../course.service';
 })
 export class UpdateCourseComponent implements OnInit {
   course: any = {};
-  @Input() courses: Course[];
-  editForm: FormGroup;
+  @Input() courses!: Course[];
+  editForm!: FormGroup;
   constructor(private formBuilder: FormBuilder, private router: Router, private courseService: CourseService) { }
 
   ngOnInit() {

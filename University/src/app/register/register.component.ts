@@ -10,8 +10,8 @@ import { RegisterService } from '../register.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-    employee: any;
-    registerForm: FormGroup;
+    employee!: Employee;
+    registerForm!: FormGroup;
     submitted = false;
   constructor(private formBuilder: FormBuilder, private router: Router, private registerService: RegisterService) {
   }

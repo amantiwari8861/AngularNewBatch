@@ -14,7 +14,7 @@ import { RegisterService } from './register.service';
 import { AuthGuard } from './auth.guard';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { AdmissionComponent } from './admission/admission.component';
+// import { AdmissionComponent } from './admission/admission.component';
 import { ContactComponent } from './contact/contact.component';
 import { PhonePipe } from './phone.pipe';
 
@@ -27,7 +27,7 @@ import { PhonePipe } from './phone.pipe';
     UpdateCourseComponent,
     AddCourseComponent,
     HomeComponent,
-    AdmissionComponent,
+    // AdmissionComponent,
     ContactComponent,
     PhonePipe
   ],

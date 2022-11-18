@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from '../course';
 import { CourseService } from '../course.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-course',
@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-  courses: Course[];
+  courses!: Course[];
   course: any = {};
   constructor(private formBuilder: FormBuilder, private router: Router, private courseService: CourseService) { }
 
