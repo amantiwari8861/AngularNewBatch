@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "GrantUniversity"
+  "defaultProject": "GrantUniversity",
+  "cli": {
+    "analytics": false
+  }
 }
