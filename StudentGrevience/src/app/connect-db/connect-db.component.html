@@ -25,8 +25,8 @@
     </li>
 </ul>
 <button (click)="ADD_BOOK = true">Add student</button>&nbsp;
-<!-- <button class="btn btn-primary" (click)="UPDATE_BOOK = true">Update student</button>&nbsp;
-<button class="btn btn-primary" (click)="DELETE_BOOK = true">Delete student</button> -->
+ <button class="btn btn-primary" (click)="UPDATE_BOOK = true">Update student</button>&nbsp;
+<button class="btn btn-primary" (click)="DELETE_BOOK = true">Delete student</button>
 <br />
 <div *ngIf="ADD_BOOK">
     <table>
@@ -64,7 +64,7 @@
     </table>
     <br />
 </div>
-<!-- <div *ngIf="UPDATE_BOOK">
+ <div *ngIf="UPDATE_BOOK">
   <table>
     <tr>
       <td>Enter Id of the student:</td>
@@ -82,16 +82,24 @@
     </tr>
     <br />
     <tr>
+      <td>Enter Email of the student:</td>
       <td>
-        <button class="btn btn-primary" (click)="updatestudent(id.value, name.value); UPDATE_BOOK = false">
+        <input type="text" #email />
+        <br />
+      </td>
+    </tr>
+    <br />
+    <tr>
+      <td>
+        <button class="btn btn-primary" (click)="updatestudent(id.value, name.value,email.value); UPDATE_BOOK = false">
           Update Record
         </button>
       </td>
     </tr>
   </table>
-</div> -->
+</div>
 <br />
-<!-- <div *ngIf="DELETE_BOOK">
+ <div *ngIf="DELETE_BOOK">
   <table>
     <tr>
       <td>Enter Id of the student:</td>
@@ -102,11 +110,11 @@
     <br />
     <tr>
       <td>
-        <button class="btn btn-primary" (click)="deletestudent(id.value); DELETE_BOOK = false">
+        <button class="btn btn-primary" (click)="deleteStudent(id.value); DELETE_BOOK = false">
           Delete Record
         </button>
       </td>
     </tr>
   </table>
-</div> -->
+</div>
 <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>

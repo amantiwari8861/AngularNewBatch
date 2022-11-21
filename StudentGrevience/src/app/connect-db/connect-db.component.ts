@@ -30,6 +30,23 @@ export class ConnectDbComponent implements OnInit {
     this.userservice.addStudents({id, name,email })
       .subscribe({next:(student: any) => this.students.push(student)});
   }
+
+  updatestudent(stId: string, name: string,email:string): void {
+    let id=parseInt(stId)
+    this.userservice.updateStudent({ id, name,email })
+          .subscribe({next:(student: student) => {
+
+            this.getStudentsData();
+      }});
+  }
+  deleteStudent(bookId: string): void {
+    let id=parseInt(bookId)
+    this.userservice.deleteStudent(id)
+      .subscribe({next:(student: student) => 
+        // this.books = book
+        this.getStudentsData()
+      });
+  } 
   ngOnInit(): void {
     this.getStudentsData();
   }
