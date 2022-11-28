@@ -24,8 +24,10 @@ export class UpdateCourseComponent implements OnInit {
       courseFee: ['', Validators.required]
     });
 
-    const id = localStorage.getItem('updateCourseId');
-    if (+id > 0) {
+    const id=localStorage.getItem('updateCourseId');
+    
+
+    if (+id > 0 ) {
       this.courseService.getCourseById(+id).subscribe(data => {
         this.editForm.patchValue(data);
       });

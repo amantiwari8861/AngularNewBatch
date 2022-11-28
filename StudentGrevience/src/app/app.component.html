@@ -1,1 +1,14 @@
-<app-connect-db></app-connect-db>
+<!-- <app-connect-db></app-connect-db> -->
+<!-- <app-routing></app-routing> -->
+
+<h1>{{title}}</h1>
+<nav>
+    <a [routerLink]='["/dashboard"]' routerLinkActive="active">Dashboard</a>
+    <a [routerLink]='["/students"]' routerLinkActive="active">Students</a>
+    <!-- <a [routerLink]='["/students"]' >Students</a> -->
+</nav>
+<div style="border:1px solid red;">
+    <router-outlet></router-outlet>
+</div>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non fugiat amet iste unde quae enim, quod, similique esse sit velit fugit! Nobis mollitia dolores aut? Eveniet quibusdam magni nesciunt atque.</p>
