@@ -54,7 +54,7 @@
 
 Angular places itself on the client-side in the complete application stack and provides a completely client-side solution for quick application development. Angular has absolutely no dependencies and also jells perfectly with any possible server-side technology like Java, NodeJS, PHP, etc., and any database like MongoDB, MySql. 
 
-![webapplication image](./introWebApp.png "This is WebApp Intro.")
+<img src="https://github.com/amantiwari8861/AngularNewBatch/blob/master/introWebApp.png" alt="This is WebApplication Intro image.">
 
 
 To develop an application using Angular on a local system, you need to set up a development environment that includes the installation of:
