@@ -1,0 +1,221 @@
+There are four types of directives in Angular:
+
+1. Components directives
+2. Structural directives[*ngFor, *ngIf, *ngSwitch]
+3. Attribute directives
+4. Custom Directive
+
+1. Components directives:
+==========================
+	It is mainly used to specify the HTML templates. It is the most commonly-used directive in an Angular project. It is decorated with the @component decorator. This directive is a class. The component directive is used to specify the template/HTML for the DOM Layout. Its built-in is @Component.
+	
+	You can create a component in Angular  using the @Component() decorator which can be imported from @angular/core. You simply decorate a TypeScript class with the @Component() decorator that takes information about the HTML view to use for the component and the CSS styles. For the code which controls the component, it's encapsulated inside the class.
+	
+	@Component decorator
+	It provides metadata that determines how the component should be processed, instantiated and used at runtime.
+	
+2. Attribute directives:
+========================
+	Attribute directive is used to change/modify the behavior of the HTML element in the DOM Layout. Its built-in type is NgStyle, NgClass. it is used to change the attributes of the existing HTML element. NgClass, NgStyle are the most used attribute directives.
+	
+	NgStyle
+
+	NgStyle directive is similar to one of the data binding techniques called style binding in Angular. The main point is NgStyle is used to set multiple in-line styles for the HTML element.
+
+	NgClass
+
+	It is similar to NgStyle attribute but here it is using the class attribute of the HTML element to apply the style.
+	
+	
+	NgStyle  Example:
+	
+	import { Component } from '@angular/core';    
+    
+	@Component({    
+    selector: 'style-app',    
+    template: `<button style='color:green' [ngStyle]="MyStyle()">Pankaj Saini</button>`  
+	})    
+	export class AppComponent {    
+		isBold: boolean = true;    
+		fontSize: number = 30;    
+		isItalic: boolean = true;    
+    
+    MyStyle() {    
+        let mystyles = {    
+            'font-weight': this.isBold ? 'bold' : 'normal',    
+            'font-style': this.isItalic ? 'italic' : 'normal',    
+            'font-size.px': this.fontSize    
+        };    
+    
+        return mystyles;    
+		}    
+	}   
+
+
+Example for NgClass:
+====================
+
+    import { Component } from '@angular/core';    
+    
+@Component({    
+    selector: 'style-app',    
+    template: `<button class='colorClass' [ngClass]='applyClasses()'>Bharath</button>`,    
+    styles: [`.boldClass{    
+                font-weight:bold;    
+                  font-size : 30px;    
+            }    
+    
+            .italicsClass{    
+                font-style:italic;    
+            }    
+    
+            .colorClass{    
+                color:Red;               
+ }`]    
+})    
+export class AppComponent {    
+    applyBoldClass: boolean = true;    
+    applyItalicsClass: boolean = true;    
+    
+    applyClasses() {    
+        let classes = {    
+            boldClass: this.applyBoldClass,    
+            italicsClass: this.applyItalicsClass    
+        };    
+    
+        return classes;    
+    }    
+}    	
+
+
+
+3. Structural directives:
+==========================
+
+	The structural directive is used to add or remove the HTML Element in the Dom Layout, typically by adding, removing, or manipulating elements... Its built-in types are *NgIf,*NgFor,*NgSwitch. Structural directives are easy to recognize by using an asterisk (*).
+	
+	
+	Difference between the structural directive and attribute directive
+
+	The structural directive is used to add or remove the Dom Element itself in the Dom Layout, whereas attribute directives are used to just change the attribute or appearance of the Dom element.
+	
+Types of built-in structural directive:
+---------------------------------------
+	NgIf
+
+	It is used to create or remove a part of the DOM tree depending on a condition.
+
+	NgFor
+
+	It is used to customize data display. It is mainly used for displaying a list of items using repetitive loops.
+
+	NgSwitch
+
+	It is like the JavaScript switch. It can display one element from among several possible elements, based on a switch condition. Angular puts only the selected element into the DOM.
+	
+Example for NgSwitch:
+---------------------
+
+	import { Component } from '@angular/core';    
+    
+	@Component({    
+    selector: 'root-app',    
+    template: `<h2>{{title}}</h2>      
+	<p *ngIf="showElement">Show Element</p>      
+	<div [ngSwitch]="inpvalue">      
+	<p style='color:blue'  *ngSwitchCase="1">You have selected M S Dhoni</p>      
+	<p style='color:blue'  *ngSwitchCase="2">You have selected Sachin Tendulkar</p>      
+	<p style='color:blue'  *ngSwitchCase="3">You have selected Satyaprakash Samantaray</p>     
+	<p style='color:red'  *ngSwitchDefault>Sorry! Invalid selection....</p>      
+	</div>`      
+	})    
+	export class AppComponent {    
+    
+		inpvalue: number = 3;    
+	}
+
+
+Custom Directives:
+-----------------
+		We can create custom attribute directives and custom structural directives using a @Directive decorator. Using custom attribute directive we can change appearances such as text color, background color and font size of the body of an HTML element that can be called host element. To change appearance angular provides ElementRef class that can directly access DOM.
+		
+Benefits of using custom directive:
+	It is vulnerable to XSS attacks when we directly use ElementRef in our application. It is better to create a custom directive and use ElementRef inside directive to change appearance or behavior of the host element.
+	
+	Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user.
+	
+Steps to be followed to create custom attribute directive:
+----------------------------------------------------------
+	1. Create a class decorated with @Directive.
+	2. Assign the attribute directive name to the selector metadata of @Directive decorator.
+	3. Use ElementRef class to access DOM to change host element appearance and behavior.
+	4. Use @Input() decorator to accept user input in our custom directive.
+	5. Use @HostListener() decorator to listen to events in custom attribute directive.
+	6. Configure custom attribute directive class in application module in the declarations metadata of @NgModule.
+	
+
+Create a Custom directive:
+  ng g d red
+  
+ import { Directive, ElementRef } from '@angular/core';  
+  
+@Directive({   
+     selector: '[myRed]'   
+})  
+export class MyRedDirective {  
+    constructor(elRef: ElementRef) {  
+       elRef.nativeElement.style.color = 'red';  
+    }  
+}   
+<p appRed>Hello This is Red</p>
+
+To use our custom directive anywhere in our angular application, we need to configure it in application module in the same way as we configure the component.
+
+@NgModule({  
+  declarations: [  
+    AppComponent,  
+    MyRedDirective  
+  ], 
+  
+  
+ Creating a Custom Structural Directive:
+ =======================================
+ Let us create a new structure directive *notIf which will work just opposite to the *ngIf directive.
+ 
+ Create a notif directive by using ng g d notIf
+ 
+ Add the direective in the app.module.ts file in imports array.
+ 
+ import { Directive } from '@angular/core';
+
+@Directive({
+  selector: '[appNotif]'
+})
+export class NotifDirective {
+
+  constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef) { }
+  
+  @Input() set appNotif(condition: boolean) {
+        if (!condition) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+        } else {
+            this.viewContainer.clear();        
+		}
+    }
+}
+
+	we are importing Directive, Input, TemplateRef and ViewContainerRef from @angular/core.
+	
+	Directive provides the same functionality for the @Directive decorator. The Input decorator is used to communicate between the two components. It sends data from one component to the other using property binding.
+	
+	TemplateRef represents the embedded template which is used to instantiate the embedded views. These embedded views are linked to the template which is to be rendered.
+	
+	ViewContainerRef is a container where one or more views can be attached. We can use createEmbeddedView() function to attach the embedded templates in the container.
+	
+	Now, it’s time to use our newly created structural directive.
+
+	I am adding the appNotif directive in the component.html but you can use it anywhere in the application.
+
+    <h1 *appNotif="true">True</h1><h1 *appNotif="false">False</h1>
+	
+	The *appNotif directive is designed in a way that it appends the template element into the DOM if the *appNotif value is false just opposite the *ngIf directive.

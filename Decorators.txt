@@ -1,0 +1,43 @@
+Here’s the list of decorators available in Angular:
+
+@NgModule
+@Component
+@Injectable
+@Directive
+@Pipe
+@Input
+@Output
+@HostBinding
+@HostListener
+@ContentChild
+@ContentChildren
+@ViewChild
+@ViewChildren
+
+1. @NgModule:
+	Defines a module that contains components, directives, pipes, and providers.
+
+2. @Component:
+	Declares that a class is a component and provides metadata about the component.
+3. @Injectable:
+	Declares that a class has dependencies that should be injected into the constructor when the dependency injector is creating an instance of this class.
+4. @Directive:
+	Declares that a class is a directive and provides metadata about the directive.
+5. @Pipe:
+	Declares that a class is a pipe and provides metadata about the pipe.
+6. @Input:
+	Declares an input property that you can update via property binding (example: <my-cmp [myProperty]="someExpression">).
+7. @Output:
+	Declares an output property that fires events that you can subscribe to with an event binding (example: <my-cmp (myEvent)="doSomething()">).
+8. @HostBinding:
+	Binds a host element property (here, the CSS class valid) to a directive/component property (isValid).
+9. @HostListener:
+	Subscribes to a host element event (click) with a directive/component method (onClick), optionally passing an argument ($event).
+10. @ContentChild:
+	Binds the first result of the component content query (myPredicate) to a property (myChildComponent) of the class.
+11. @ContentChildren: 
+	Binds the results of the component content query (myPredicate) to a property (myChildComponents) of the class.
+12. @ViewChild:
+	Binds the first result of the component view query (myPredicate) to a property (myChildComponent) of the class. Not available for directives.
+13. @ViewChildren:
+	Binds the results of the component view query (myPredicate) to a property (myChildComponents) of the class. Not available for directives.

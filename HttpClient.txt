@@ -1,0 +1,516 @@
+What is Angular Service?
+ 
+	In Angular Framework, services are always singleton objects(Singleton Design Pattern) which normally get instantiated only once during the lifetime of any application or module. Every Angular Service contains several methods that always maintains the data throughout the life of an application. It is a mechanism to share responsibilities within one or multiple components.Service is the best place where we can take data from other sources or write down some calculations. Similarly, services can be shared between multiple components as needed.
+	
+There are simply two steps for creating services in Angular:
+	1. Create a class with @Injectable decorator. 
+	2. Register the class with the provider or inject the class by using dependency injection. 
+	
+Benefits of using Service
+--------------------------
+ 
+	1. Angular services are single objects that normally get instantiated only once during the lifetime of the Angular application. 
+	
+	2. This Angular service maintains data throughout the life of an application. It means data does not get replaced or refreshed and is available all the time. 
+	
+	3. The main objective of the Angular service is to use shared business logic, models, or data and functions with multiple different components of an Angular application.
+	
+	4. The main objective of using an Angular service is the Separation of Concern. 
+	
+	5. An Angular service is basically a stateless object, and we can define some useful functions within an Angular service. These functions can be invoked from any component of the application elements like Components, Directives, etc. 
+	
+	6. This will help us to divide the entire application into multiple small, different, logical units so that those units can be reusable. 
+	
+How to define a Service 
+========================
+ 
+We can create a user-defined custom service as per our requirement. To create a service, we need to follow the below steps:
+	1. First, we need to create a TypeScript file with proper naming.
+	2. Next, create a TypeScript class with the proper name that will represent the service after a while.
+	3. Use the @Injectable decorator at the beginning of the class name that was imported from the @angular/core packages. Basically, the purpose of the @Injectable is that user-defined service and any of its dependents can be automatically injected by the other components.
+	4. Although, for design readability, Angular recommends that you always define the @Injectable decorator whenever you create any service.
+	5. Now, use the Export keyword against the class objects so that this service can be injectable or reused on any other components.
+	
+Or Simply put CLI Command:
+    ng generate service service-name
+
+import { Injectable } from '@angular/core';  
+  
+@Injectable()   
+export class MessageService   
+{   
+  constructor()   
+  { }  
+    
+  publish showMessage(message: string)   
+  {   
+    alert(message);   
+  }    
+}  
+
+
+@Injectable() 
+-------------
+	@Injectable is actually a decorator in Angular Framework. Decorators are a proposed extension in JavaScript. In short, a decorator provides the ability for programmers to modify or use methods, classes, properties, and parameters. In angular, every Injectable class actually behaves just like a normal class. That’s why the Injectable class does not have any special lifecycle in the Angular framework. So, when we create an object of an Injectable class, the constructor of that class simply executed just like ngOnInit() of the component class. 
+	
+	
+The Angular HttpClient Module:
+==============================
+	Angular is a complete platform for creating client side mobile and desktop apps. As such, you don't have to use other external libraries for doing common operations like HTTP requests.
+	
+	Angular provides the HttpClient module which allows developers to send HTTP requests and make API calls to remote HTTP servers.
+	
+	HttpClient is available from the @angular/common/http package and it replaces the old HTTP client that was available from the @angular/http package.
+	
+	In web browsers you have two standard APIs for sending HTTP requests which are the XMLHttpRequest interface and the fetch() API (available only on modern browsers).
+	
+	The HttpClient module is built on top of the XMLHttpRequest interface. It wraps all the complexities of this interface and provides extra features like:
+	
+	1. RxJS Obervables,
+	2. Interceptors for requests and responses,
+	3. Types for requests and responses,
+	4. Better error handling,
+	5. Support for testing,
+	
+Configuring The HttpClient Module:
+----------------------------------
+
+	After introducing HttpClient, let's now see how you can configure it in your Angular  application.
+
+	In fact, you don't have to do much, you simply need to import HttpClientModule from the @angular/common/http package and include it in the imports array of main application module.
+
+	Open the src/app/app.module.ts file and add the following code at the top of the file:
+
+	import { HttpClientModule } from '@angular/common/http';
+	Next, include HttpClientModule in the imports array of the application module:
+	
+	That's it! You can now use the HttpClient library to send HTTP requests to a third-party API server or to your back-end REST API server.
+	
+Creating an Angular Service
+---------------------------------
+	After setting up HttpClient in your project, you need to create a service which will import HttpClient and use it to send any HTTP requests needed in your application.
+
+	This service will be then injected in any component that needs to do any HTTP operations.
+	
+	now create a service by using ng g s course
+	
+	import { Injectable } from '@angular/core';
+import { Course } from './course';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable()
+export class CourseService {
+
+  baseUrl = 'http://localhost:3000/courses/';
+  
+  constructor(private http: HttpClient) { }
+  
+  
+}
+After creating service, these steps need to be followed:
+ 
+ You first inject HttpClient as a private httpClient instance in the service's constructor.
+
+You next add the baseUrl string variable which stores the address of the remote API server.
+
+======================================	
+	Create a Model class
+	ng g class course
+	
+	export class Course {
+
+    id: number;
+    courseName: string;
+    courseDuration: string;
+    courseEligibility: string;
+    courseFee: number;
+}
+
+Now create a Component:
+
+   ng g c course
+   
+  Add the ts file:
+  Add the html File:
+  
+  and now the Global CSS for Errors:
+  .ng-valid[required], .ng-valid.required  {  
+    border-left: 5px solid #42A948; /* green */  
+  }  
+  .ng-invalid:not(form)  {  
+    border-left: 5px solid #a94442; /* red */  
+  } 
+
+  .error {
+    color: red;
+}
+  
+How To create a Remote API Server:
+--------------------------------------
+
+Creating the REST API
+=======================
+
+1. First, you need to install json-server via npm by running the following command:
+	npm install -g json-server
+	
+	 This will install the package globally. You might need to use a CMD with administrator privileges in Windows in order to be able to install packages globally on your system without getting permission errors.
+	 
+2. Next, you need to create a JSON file, which will act as a database for our server. First, go to the angular-project folder.
+
+3. Next, create a server folder inside the angular-project folder and navigate to it:
+    $ mkdir server
+	$ cd server
+4. Next, create a courses.json file inside the server folder
+5. Open the server/courses.json file and add the following data:
+
+{
+  "courses": [
+    {
+      "id": 101,
+      "courseName": "Python Programming",
+      "courseDuration": "60 Hours",
+      "courseEligibility": "Under Graduate",
+      "courseFee": "10000"
+    }
+	]
+}
+
+
+Finally, run the API server by executing the following command:
+    json-server --watch courses.json
+
+	You can now send HTTP requests to the server just like any typical REST server. Your RESTful server will be available from the http://127.0.0.1:3000/ and your JSON data will be available on the path http://127.0.0.1:3000/courses/
+	
+3000 is the default server port, if you want to change the server then:
+ json-server --watch courses.json --port 4000
+
+
+In the next step, you'll add the methods for doing create, read, update and delete operations against the the www.server.com/api/customers endpoint.
+
+Creating CRUD Methods:
+----------------------
+
+	After creating an Angular service and the class model and injected HttpClient into the service, you can now create the CRUD methods
+
+	Since these methods will make use of the Course model class as a type, either for the parameters or the return results, you first need to import the class inside the service's file:
+
+	import { Course } from './course';
+	Next, you can define the following five methods for creating, reading, updating and deleting the courses:
+	
+course.service.ts:
+====================
+
+import { Injectable } from '@angular/core';
+import { Course } from './course';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+@Injectable()
+export class CourseService {
+
+  baseUrl = 'http://localhost:3000/courses/';
+  constructor(private http: HttpClient) { }
+  
+  getCourses(): Observable<Course[]> {
+     return this.http.get<Course[]>(this.baseUrl);
+  }
+  getCourseById(id: number): Observable<Course> {
+    return this.http.get<Course>(this.baseUrl + '/' + id);
+  }
+
+  createCourse(course: Course): Observable<Course> {
+    return this.http.post<Course>(this.baseUrl, course);
+  }
+
+  updateCourse(course: Course): Observable<Course> {
+    return this.http.put<Course>(this.baseUrl + '/' + course.id, course);
+  }
+
+  deleteCourse(courseId: number): Observable<Course> {
+    return this.http.delete<Course>(this.baseUrl + '/' + courseId);
+  }
+}
+
+
+course.component.ts:
+======================
+
+import { Component, OnInit } from '@angular/core';
+import { Course } from '../course';
+import { CourseService } from '../course.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
+})
+export class CourseComponent implements OnInit {
+  courses: Course[];
+  course: any = {};
+  constructor(private formBuilder: FormBuilder, private router: Router, private courseService: CourseService) { }
+
+  addCourse(courseName: string): void {
+    this.router.navigate(['add-course']);
+  }
+  deleteCourse(course: Course): void {
+    this.courseService.deleteCourse(course.id).subscribe();
+    this.courses = this.courses.filter(c => c !== course);
+  }
+
+  updateCourse(course: Course): void {
+    localStorage.removeItem('updateCourseId');
+    localStorage.setItem('updateCourseId', course.id.toString());
+    this.router.navigate(['update-course']);
+  }
+
+
+  ngOnInit() {
+    this.courseService.getCourses().
+      subscribe(data => {
+        this.courses = data;
+      });
+  }
+
+}
+
+
+course.component.html
+
+<div>
+    <button class="btn btn-success" (click)="addCourse(course)">Add Course</button>
+</div>
+<div class="col-md-12">
+  <h2> Course Details</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Course Name</th>
+      <th>Course Duration</th>
+      <th>Course Eligibility</th>
+      <th>Course Fee</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{course.id}}</td>
+      <td>{{course.courseName}}</td>
+      <td>{{course.courseDuration}}</td>
+      <td>{{course.courseEligibility}}</td>
+      <td>{{course.courseFee}}</td>
+      <td><button class="btn btn-danger" (click)="deleteCourse(course)"> Delete</button>
+        <button class="btn btn-primary" (click)="updateCourse(course)" style="margin-left: 20px;"> Update</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+Now Create addCourse component
+=================================
+
+addcourse.component.ts:
+=======================
+
+import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CourseService } from '../course.service';
+import { Course } from '../course';
+
+@Component({
+  selector: 'app-add-course',
+  templateUrl: './add-course.component.html',
+  styleUrls: ['./add-course.component.css']
+})
+export class AddCourseComponent implements OnInit {
+
+  @Input() courses: any;
+  constructor(private formBuilder: FormBuilder, private router: Router, private courseService: CourseService) { }
+
+  addForm: FormGroup;
+  course: any;
+  submitted = false;
+  ngOnInit() {
+    this.addForm = this.formBuilder.group({
+      id: ['', Validators.required],
+      courseName: ['', Validators.required],
+      courseDuration: ['', Validators.required],
+      courseEligibility: ['', Validators.required],
+      courseFee: ['', Validators.required]
+    });
+
+  }
+  addCourse() {
+    this.submitted = true;
+    if (this.addForm.invalid) {
+      return;
+    }
+    this.courseService.createCourse(this.addForm.value)
+      .subscribe(data => {
+        console.log('Create fire');
+        this.router.navigate(['course']);
+      },
+      error => {
+        alert(error);
+      });
+  }
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.addForm.value);
+  }
+}
+
+
+addcourse.component.html:
+==========================
+<div class="col-md-6">
+  <h2 class="text-center">Add Course</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="number" formControlName="id" placeholder="Course Id with max 5 digits" name="id" class="form-control" id="courseId">
+       <div *ngIf="submitted && addForm.controls.id.errors" class="error" >
+          <div *ngIf="addForm.controls.id.errors.required">Course Id is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="courseName" placeholder="Course Name" name="courseName" class="form-control" id="courseName">
+    <div *ngIf="submitted && addForm.controls.courseName.errors" class="error" >
+          <div *ngIf="addForm.controls.courseName.errors.required">Course Name is required</div>
+        </div>
+    </div>
+     <div class="form-group">
+      <input type="text" formControlName="courseDuration" placeholder="Course Duration" name="courseDuration" class="form-control" id="courseDuration">
+      <div *ngIf="submitted && addForm.controls.courseDuration.errors" class="error" >
+          <div *ngIf="addForm.controls.courseDuration.errors.required">Course Duration is required</div>
+        </div>
+    </div>
+     <div class="form-group">
+      <input type="text" formControlName="courseEligibility" placeholder="Course Eligibility" name="courseEligibility" class="form-control" id="courseEligibility">
+      <div *ngIf="submitted && addForm.controls.courseEligibility.errors" class="error" >
+          <div *ngIf="addForm.controls.courseEligibility.errors.required">Course Eligibility is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="courseFee" placeholder="Course Fee" name="courseFee" class="form-control" id="courseFee">
+     <div *ngIf="submitted && addForm.controls.courseFee.errors" class="error" >
+          <div *ngIf="addForm.controls.courseFee.errors.required">Course Fee is required</div>
+        </div>
+    </div>
+
+
+
+    <button class="btn btn-success" (click)="addCourse()" [disabled]="!addForm.valid">Add Course</button>
+  </form>
+</div>
+
+
+Update Course:
+==============
+
+updatecourse.component.ts:
+============================
+
+import { Component, OnInit, Input } from '@angular/core';
+import { Course } from '../course';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CourseService } from '../course.service';
+
+@Component({
+  selector: 'app-updatecourse',
+  templateUrl: './updatecourse.component.html',
+  styleUrls: ['./updatecourse.component.css']
+})
+export class UpdateCourseComponent implements OnInit {
+  course: any = {};
+  @Input() courses: Course[];
+  editForm: FormGroup;
+  constructor(private formBuilder: FormBuilder, private router: Router, private courseService: CourseService) { }
+
+  ngOnInit() {
+    this.editForm = this.formBuilder.group({
+      id: [],
+      courseName: ['', Validators.required],
+      courseDuration: ['', Validators.required],
+      courseEligibility: ['', Validators.required],
+      courseFee: ['', Validators.required]
+    });
+
+    const id = localStorage.getItem('updateCourseId');
+    if (+id > 0) {
+      this.courseService.getCourseById(+id).subscribe(data => {
+        this.editForm.patchValue(data);
+      });  
+  }
+  }
+  getCourseById() {
+    const id = localStorage.getItem('updateCourseId');
+    this.courseService.getCourseById(+id).
+      subscribe(data => {
+        this.course = data;
+      });
+      console.log('Course Name is : ' + this.course.courseName);
+  }
+  updateCourse() {
+    this.courseService.updateCourse(this.editForm.value).subscribe(data => {
+      this.router.navigate(['course']);
+    },
+      error => {
+        alert(error);
+      });
+  }
+  onSubmit() {
+  }
+}
+==========================
+setValue()
+ 
+setValue() will set the value of all form controls of the form group.  
+
+patchValue() 
+
+patchValue() method will also set Formcontrol values from a model but only for those which we have mentioned in the model. So,  it is not necessary to pass all the model info in patchValue() method. 
+
+
+
+updatecourse.component.html
+=============================
+<div class="col-md-8">
+  <h2>Update Course Details</h2>
+  <form [formGroup]="editForm">
+    <div class="form-group">
+      <label for="id">Course Id:</label>
+      <input type="number" formControlName="id" placeholder="Course Id" name="id" class="form-control" id="id" >
+    </div>
+    <div class="form-group">
+      <label for="courseName">Course Name:</label>
+      <input formControlName="courseName" placeholder="Course Name" name="courseName" class="form-control" id="courseName">
+    </div>
+     <div class="form-group">
+      <label for="courseDuration">Course Duration:</label>
+      <input type="text" formControlName="courseDuration" placeholder="Course Duration" name="courseDuration" class="form-control" id="courseDuration">
+    </div>
+     <div class="form-group">
+      <label for="courseEligibility">Course Eligibility:</label>
+      <input type="text" formControlName="courseEligibility" placeholder="Course Eligibility" name="courseEligibility" class="form-control" id="courseEligibility">
+    </div>
+    <div class="form-group">
+      <label for="courseFee">Course Fee:</label>
+      <input type="text" formControlName="courseFee" placeholder="Course Fee" name="courseFee" class="form-control" id="courseFee">
+    </div>
+
+
+
+    <button class="btn btn-success" (click)="updateCourse()">Update Course</button>
+  </form>
+</div>
+
+

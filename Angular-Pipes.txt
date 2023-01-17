@@ -1,0 +1,180 @@
+Pipes:
+	Angular comes with the stock of pipes such as DatePipe, UpperCasePipe, LowerCasePipe, CurrentcyPipe, and PercentPipe and they are all available for use in any angular template. Angular doesn’t have the FilterPipe or an OrderByPipe. Angular doesn’t provide the pipes for filtering or sorting lists because they perform poorly and prevent aggressive minification. They both filter and order require parameters that reference object properties. Pipes are the great way to encapsulate and share a common display-value transformation.
+	
+	Pipes are used to format the data before displaying in the View. Pipe is used by using |. This symbol is called a Pipe Operator.
+Built-in Pipes are:
+======================
+1. Lowercase
+2. Uppercase
+3. Titlecase
+4. Slice
+5. Json Pipe
+6. Number Pipe
+7. Percent Pipe
+8. Currency Pipe
+9. Date Pipe
+
+DatePipe
+
+ birthday = new Date(1985, 0, 10); //Date(year, month, day)
+ 
+ Birthday is : {{birthday | date: 'full'}}
+ Birthday is : {{birthday | date}}
+ 
+ Parameterizing a pipe:
+ ----------------------
+ We can also pass a parameter to the pipe. You can write the HTML code like this to pass the parameter.
+ 
+ Birthday is : {{birthday | date: 'dd/MM/yyyy'}}
+ Birthday is : {{birthday | date: 'dd/MM/yyyy hh:mm:ss'}}
+ 
+ You can create the current date by new Date().
+
+Chaining pipes:
+---------------
+We can chain pipes together in and create useful combinations. We can use the uppercase or lowercase pipe in our example.
+
+Birthday is : {{ birthday | date | uppercase }} 
+
+uppercase pipe:
+----------------
+Name in Uppercase: {{name | uppercase}}
+Name in Lowercase: {{name | lowercase}}
+Name in Title case: {{name | titlecase}}
+Name in Slice: {{name | slice:10}}
+
+Json Pipe:
+-----------
+.ts file:
+
+public languages = {
+    'programming': 'TypeScript',
+    'Frontend': 'Angular'
+  };
+  
+ .html
+ Json Pipe: {{languages | json}}
+ 
+ 
+ <div>
+ <h3> {{9.234 | number: '1.2-2'}}</h3>
+ <h3> {{9.234 | currency }}</h3>
+ <h3> {{9.234 | percent }}</h3>
+ <h3> {{9.234 | currency: 'GBP'}}</h3>
+</div>
+
+
+
+Pure and impure pipes:
+-----------------------
+
+There are two categories of pipes: 
+
+1) pure 
+
+2) impure. 
+
+By default, the pipes in Angular are Pure. Every pipe you have seen so far has been pure like built-in pipes. You can make the pipe impure by setting the pure flag to false.
+
+Pure pipes:
+-------------
+	Angular executes the pure pipe only when it detects the absolute change to an input value.  The pure change is either in the change to the primitive input value (String, Number, Boolean,  Symbol) or a changed object reference (Date, Array, Function, Object).
+	
+Impure Pipes:
+--------------
+	Angular executes an impure pipe during every component change detection cycle. An impure pipe is called often, as often as every keystroke or mouse-move.
+	
+How to Create a Custom Angular Pipe?
+====================================
+create a Pipe:
+
+ng g p ExponentialStrength --flat(It will come on the root folder)
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'exponentialStrength'
+})
+export class ExponentialStrengthPipe implements PipeTransform {
+
+  transform(value: number, exponent: string): number {
+    const exp = parseFloat(exponent);
+    return Math.pow(value, isNaN(exp) ? 1 : exp);
+  }
+
+}
+
+
+This pipe definition reveals the following key points:
+
+1. A pipe is a class decorated with pipe metadata.
+2. The pipe class implements the PipeTransform interface's transform method that accepts an input value followed by optional parameters and returns the transformed value.
+3. There will be one additional argument to the transform method for each parameter passed to the pipe.
+   Your pipe has one such parameter: the exponent.
+4. To tell Angular that this is a pipe, you apply the @Pipe decorator, which you import from the core  Angular library.
+5. The @Pipe decorator allows you to define the pipe name that you'll use within template expressions. It  must be a valid JavaScript identifier. Your pipe's name is exponentialStrength.
+
+The PipeTransform interface:
+------------------------------
+
+	The transform method is essential to a pipe. The PipeTransform interface defines that method and guides both tooling and the compiler. Technically, it's optional; Angular looks for and executes the transform method regardless.
+
+in the template:
+
+<div>
+<h2>Power Booster</h2>
+<p>Super power boost: {{2 | exponentialStrength: 10}}</p>
+</div>
+
+
+Another Power Booster factor:
+------------------------------
+.ts:
+ power = 5;
+  factor = 1;
+  
+ html:
+ --------------
+<div>
+<h2>Power Booster</h2>
+<p>Super power boost: {{2 | exponentialStrength: 10}}</p>
+</div>
+<div>
+<h2>Power Boost Calculator</h2>
+    <div>Normal power: <input [(ngModel)]="power"></div>
+    <div>Boost factor: <input [(ngModel)]="factor"></div>
+    <p>
+      Super Hero Power: {{power | exponentialStrength: factor}}
+    </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

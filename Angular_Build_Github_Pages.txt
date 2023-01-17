@@ -1,0 +1,42 @@
+To Build the Angular Application in production environment, We use
+	ng build --prod 
+	
+	to build the application in production environment. It will automatically add aot compiler.
+Now the dist folder is created, then put this in the server like http server.
+
+
+to add this dist folder on the server at the build phase we need to add additional flag.
+like :  ng build --prod --base-href mybasehref
+
+Lets add this on github pages....
+   angular cli ghpases
+   
+To use this install angular-cli-ghpages by using npm command in local environment
+
+   npm i -g angular-cli-ghpages
+
+Now create a repository  
+     like.....my-repository
+	 
+Go to the project folder:
+>> git init
+>> git add README.md
+>> git commit -m "First Commit"
+
+now
+>> git remote add origin git@github.com:<github-username>/<git-repository-name>.git
+and then 
+>> git push -u origin master
+
+Now to deploy on github pages:
+
+>> ng build --prod --base-href https://<github-username>.github.io/<git-repository-name>/
+
+
+Now invoke
+>> ngh 
+
+and open the url:
+https://<github-username>.github.io/<git-repository-name>/
+
+
