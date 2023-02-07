@@ -1,0 +1,15 @@
+<!-- <h1 *ngIf="age>18;else noteligible">Ready to vote</h1>
+
+<ng-template #noteligible>
+    <h1 >Not ready to vote</h1>
+</ng-template> -->
+
+<h1 *ngFor="let course of courses; let a=index">{{a}}. Id : {{course.id}}  Name :{{course.name}} </h1>
+
+<div [ngSwitch]="choice">
+    <p *ngSwitchCase="1">First Choice</p>
+    <p *ngSwitchCase="2">Second Choice</p>
+    <p *ngSwitchCase="3">Third Choice</p>
+    <p *ngSwitchCase="2">Second Choice Again</p>
+    <p *ngSwitchDefault>Default Choice</p>
+  </div>
