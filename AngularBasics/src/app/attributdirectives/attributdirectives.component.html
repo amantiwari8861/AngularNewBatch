@@ -1,0 +1,9 @@
+<!-- <p [style.color]="color1" [style.background-color]="color2">attributdirectives works!</p> -->
+
+<!-- <h1 [ngStyle]="{color:'green'}">Hiii my name is aman </h1> -->
+<!-- <h1 [ngStyle]="{color:color1,backgroundColor:color2}">Hiii my name is aman </h1> -->
+
+<h1 [ngClass]="borderStatus ? 'border' : 'normal'">Lorem ipsum dolor sit amet.</h1>
+
+<button (click)="borderStatus=true">On Border</button>
+<button (click)="borderStatus=false">OFF Border</button>

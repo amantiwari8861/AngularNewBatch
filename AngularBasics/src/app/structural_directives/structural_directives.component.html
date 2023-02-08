@@ -4,7 +4,7 @@
     <h1 >Not ready to vote</h1>
 </ng-template> -->
 
-<h1 *ngFor="let course of courses; let a=index">{{a}}. Id : {{course.id}}  Name :{{course.name}} </h1>
+<!-- <h1 *ngFor="let course of courses; let a=index">{{a}}. Id : {{course.id}}  Name :{{course.name}} </h1>
 
 <div [ngSwitch]="choice">
     <p *ngSwitchCase="1">First Choice</p>
@@ -12,4 +12,6 @@
     <p *ngSwitchCase="3">Third Choice</p>
     <p *ngSwitchCase="2">Second Choice Again</p>
     <p *ngSwitchDefault>Default Choice</p>
-  </div>
+  </div> -->
+
+  <h1 *appRepeat="4">Hello there</h1>
